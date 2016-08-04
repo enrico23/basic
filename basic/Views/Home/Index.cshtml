@@ -1,0 +1,87 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="/Scripts/angular.min.js"></script>
+    <script src="/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="/Scripts/angular-sanitize.min.js"></script>
+    <script src="/Scripts/angular-spinners/dist/angular-spinners.min.js"></script>
+    <script src="/app/modules/sharedModule.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/controllers/menu.controller.js"></script>
+
+</head>
+<body ng-app="app">
+    <nav class="navbar navbar-inverse" ng-controller="menuController">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" 
+            data-toggle="collapse" data-target="#navbar" 
+            aria-expanded="false" aria-controls="navbar"
+            ng-init="navCollapsed = true" 
+            ng-click="navCollapsed = !navCollapsed"
+            >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Basic App</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse"ng-class="!navCollapsed && 'in'">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li class="dropdown" uib-dropdown>
+                <a  class="dropdown-toggle" uib-dropdown-toggle>
+                  Articles <b class="caret"></b></a>
+                <ul class="dropdown-menu" uib-dropdown-menu>
+                    <li ng-repeat="article in articles"><a href="#">{{article.title}}</a></li>
+                    
+                </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+
+        <hr />
+        <div class="container" ng-controller="testModalController">
+
+            <p><a href="#" data-ng-click="showConfirm()">Show Modal Dialog</a></p>
+
+        </div>
+
+        <div class="container" ng-controller="testSpinnerController">
+
+            <p><a href="#" data-ng-click="showSpinner()">Show Simple Spinner</a></p>
+
+            <p><a href="#" data-ng-click="hideSpinner()">Hide Simple Spinner</a></p>
+
+
+           <spinner name="booksSpinner" img-src="/Content/images/wheel.gif"></spinner>
+
+        </div>
+
+
+        <div class="container" ng-controller="testApiController">
+            Test Api Communication : <span ng-bind="message"></span>
+        </div>
+
+
+
+    </div>
+
+</body>
+</html>
